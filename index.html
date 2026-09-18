@@ -71,11 +71,12 @@ footer strong{color:#fff}
   </div>
   <div id="homeView">
     <div class="grid3" id="courseGrid"></div>
+    <p class="muted" id="acadStats" style="text-align:center"></p>
     <div class="card glass" id="diplomaBox" style="display:none">
       <div class="diploma">
         <p class="eyebrow">DIPLOMA STAFF</p>
         <h2 id="dipName">Aspirante</h2>
-        <p class="muted">Completó la Staff Academy: Fundamentos, Moderación y Liderazgo.</p>
+        <p class="muted">Completó la Staff Academy: Fundamentos, Moderación, Liderazgo y Comunicación.</p>
         <p class="muted" id="dipDate"></p>
         <div class="rowbtns" style="justify-content:center"><button type="button" class="btn primary" id="dipCopy">Copiar diploma 📋</button></div>
       </div>
@@ -110,7 +111,17 @@ document.getElementById('projLinks').innerHTML=PROJS.map(p=>`<div><h3 style="mar
 const COURSES=[
 {id:"basico",icon:"🌱",t:"Fundamentos del Staff",d:"Reglas, chat, tickets y actitud. Para Helpers nuevos.",lessons:[["El rol","Un Helper orienta, reporta y aprende. No sanciona: observa y deriva."],["El chat","Spam, mayúsculas y flood se avisan primero; el mute es el último recurso leve."],["Tickets","Todo ticket se confirma con el usuario antes de cerrarse."],["Evidencia","Sin captura, video o log no hay sanción grave."]],exam:[["Spam primera vez, ¿qué haces?",["Mute 1 hora","Avisar en el chat","Banear","Ignorarlo"],1],["¿Dónde se apela?",["Chat general","Tickets/apelaciones","MD al dueño","No se puede"],1],["Reporte sin pruebas, ¿qué haces?",["Sancionar igual","Pedir pruebas","Ignorarlo","Banear al que reporta"],1],["Ticket resuelto, ¿cómo cierras?",["Sin decir nada","Confirmando con el usuario","Borrándolo","Pasándolo"],1],["Tu amigo rompe reglas, ¿qué haces?",["Perdonarlo","Aplicar igual + hablar en privado","Que lo sancione otro","Ignorarlo"],1]]},
 {id:"mod",icon:"🛡️",t:"Moderación",d:"Sanciones, apelaciones, griefing y mediación.",lessons:[["Escala","Leve, media y grave. Cada nivel tiene su sanción tipificada."],["Apelaciones","Se revisan con pruebas e historial; sin pruebas nuevas no hay cambio."],["Griefing","Con logs se sanciona + rollback; sin pruebas se investiga."],["Mediación","Escuchar a ambas partes antes de decidir."]],exam:[["TP-trap primera vez, ¿sanción?",["Solo advertencia","Ban 1 día + devolución","Ban 15 días","Mute"],1],["Insultos tercera vez, ¿sanción?",["Mute 12 horas","Ban 7 días","Mute 3 días","Permanente"],2],["Hacks con video claro, ¿sanción?",["Ban 30 días","Mute","Ban 7 días","Advertencia"],2],["Apelación sin pruebas nuevas, ¿qué decides?",["Aceptarla","Rechazarla","Reducirla","Ignorarla"],1],["Grief de 300 bloques con autor en logs, ¿qué haces?",["Advertir","Ban + rollback filtrado","Solo rollback","Pedir más pruebas"],1]]},
-{id:"lider",icon:"⚔️",t:"Liderazgo",d:"Crisis, equipo, imparcialidad y comunicación.",lessons:[["En privado","Lo interno del Staff jamás se discute en público."],["Imparcialidad","Amigos y famosos reciben el mismo trato."],["Crisis","Contener, comunicar con calma y escalar."],["Equipo","Formar, rotar y reconocer el trabajo."]],exam:[["Dos staffs discuten en público, ¿qué haces?",["Unirte","Privado + unificar criterio","Apoyar al mayor rango","Ignorarlo"],1],["Streamer famoso con hacks en video, ¿qué haces?",["Ban sin revisar","Sanción mayor","Mismo proceso que cualquiera","Avisarle en privado"],2],["Raid coordinada al servidor, ¿qué haces?",["Observar","Contención + bans + avisar","Banear lento","Nada"],1],["Te equivocas sancionando, ¿qué haces?",["Dejarlo","Corregir + disculparte + registrar","Callar","Culpar al reglamento"],1],["Equipo quemado, ¿qué haces?",["Exigir más","Rotar y descansar","Expulsar","Nada"],1]]}
+{id:"lider",icon:"⚔️",t:"Liderazgo",d:"Crisis, equipo, imparcialidad y comunicación.",lessons:[["En privado","Lo interno del Staff jamás se discute en público."],["Imparcialidad","Amigos y famosos reciben el mismo trato."],["Crisis","Contener, comunicar con calma y escalar."],["Equipo","Formar, rotar y reconocer el trabajo."]],exam:[["Dos staffs discuten en público, ¿qué haces?",["Unirte","Privado + unificar criterio","Apoyar al mayor rango","Ignorarlo"],1],["Streamer famoso con hacks en video, ¿qué haces?",["Ban sin revisar","Sanción mayor","Mismo proceso que cualquiera","Avisarle en privado"],2],["Raid coordinada al servidor, ¿qué haces?",["Observar","Contención + bans + avisar","Banear lento","Nada"],1],["Te equivocas sancionando, ¿qué haces?",["Dejarlo","Corregir + disculparte + registrar","Callar","Culpar al reglamento"],1],["Equipo quemado, ¿qué haces?",["Exigir más","Rotar y descansar","Expulsar","Nada"],1]]},
+{id:"comu",icon:"📢",t:"Comunicación y Crisis",d:"Anuncios, tickets difíciles y turnos.",
+ lessons:[["Anuncios","Claros, sin pánico y con ETA cuando hay caídas."],
+  ["Tickets difíciles","Calma, atiende el caso y advierte el insulto por separado."],
+  ["Crisis","Contener, desmentir bulos con pruebas y escalar."],
+  ["Turnos","Entregar novedades documentadas al siguiente."]],
+ exam:[["Servidor caído y 50 preguntando, ¿qué haces?",["Callar hasta arreglar","Comunicado breve + ETA + avances","Culpar al host","Cerrar Discord"],1],
+  ["Usuario furioso insulta en su ticket, ¿qué haces?",["Banearlo","Calmar, atender y advertir","Ignorar el ticket","Reírte"],1],
+  ["Corre el bulo de un wipe, ¿qué haces?",["Borrar todo","Desmentir con pruebas y calma","Ignorarla","Confirmarla"],1],
+  ["Dos versiones del equipo, ¿qué haces?",["Publicar ambas","Unificar en privado y comunicar una","Apoyar al antiguo","Sortearlo"],1],
+  ["Turno termina con 3 casos abiertos, ¿qué haces?",["Irte","Entregar novedades documentadas","Cerrarlos rápido","Borrarlos"],1]]}
 ];
 const esc=v=>{const d=document.createElement('div');d.textContent=v==null?"":v;return d.innerHTML};
 const store={get:(k,f)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch(e){return f}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
@@ -123,6 +134,8 @@ function paintHome(){
     return `<div class="card glass course" data-course="${i}"><h3>${c.icon} ${c.t}</h3><p class="muted">${c.d}</p><p>${done?'<span class="badge">✅ Aprobado</span>':'<span class="badge off">Lecciones '+read+'/'+c.lessons.length+'</span>'}</p><div class="bar"><i style="width:${done?100:Math.round(read/c.lessons.length*100)}%"></i></div></div>`;
   }).join('');
   const all=COURSES.every(c=>prog.done[c.id]);
+  const ndone=COURSES.filter(c=>prog.done[c.id]).length;
+  document.getElementById('acadStats').textContent=`Progreso total: ${ndone}/${COURSES.length} cursos (${Math.round(ndone/COURSES.length*100)}%)`;
   document.getElementById('diplomaBox').style.display=all?'block':'none';
   if(all){
     document.getElementById('dipName').textContent=store.get('acad_name','Aspirante');
@@ -132,10 +145,10 @@ function paintHome(){
 }
 document.getElementById('stuSave').addEventListener('click',()=>{store.set('acad_name',document.getElementById('stuName').value.trim()||'Aspirante');paintHome();alert('Nombre guardado. 🎓')});
 document.getElementById('dipCopy').addEventListener('click',async()=>{
-  const t=`DIPLOMA STAFF — ${store.get('acad_name','Aspirante')} completó la Staff Academy (Fundamentos, Moderación, Liderazgo). ${new Date().toLocaleDateString('es-CO')} · Discohikorybrs`;
+  const t=`DIPLOMA STAFF — ${store.get('acad_name','Aspirante')} completó la Staff Academy (Fundamentos, Moderación, Liderazgo, Comunicación). ${new Date().toLocaleDateString('es-CO')} · Discohikorybrs`;
   try{await navigator.clipboard.writeText(t);alert('¡Diploma copiado! 🎓')}catch(e){alert('No se pudo copiar.')}
 });
-let cur=0,exIdx=0,exHits=0;
+let cur=0,exIdx=0,exHits=0,exAns=[];
 document.getElementById('courseGrid').addEventListener('click',e=>{
   const c=e.target.closest?e.target.closest('[data-course]'):null;
   if(!c)return;
@@ -174,7 +187,7 @@ function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random
 let exOrder=[];
 document.getElementById('startExam').addEventListener('click',()=>{
   exOrder=shuffle(COURSES[cur].exam.map((_,k)=>k));
-  exIdx=0;exHits=0;
+  exIdx=0;exHits=0;exAns=[];
   document.getElementById('examBox').style.display='block';
   document.getElementById('startExam').style.display='none';
   showEx();
@@ -190,9 +203,10 @@ document.getElementById('examQ').addEventListener('click',e=>{
   const b=e.target.closest?e.target.closest('[data-ex]'):null;
   if(!b)return;
   const q=COURSES[cur].exam[exOrder[exIdx]];
+  exAns.push(null);
   document.querySelectorAll('#examQ .opt').forEach(o=>{o.disabled=true;if(Number(o.dataset.ex)===q[2])o.classList.add('ok')});
-  if(Number(b.dataset.ex)===q[2]){exHits++;document.getElementById('examEnd').innerHTML='<p class="muted">✅ ¡Correcto!</p>'}
-  else{b.classList.add('bad');document.getElementById('examEnd').innerHTML=`<p class="muted">❌ Era: <b>${esc(q[1][q[2]])}</b></p>`}
+  if(Number(b.dataset.ex)===q[2]){exHits++;exAns[exAns.length-1]=Number(b.dataset.ex);document.getElementById('examEnd').innerHTML='<p class="muted">✅ ¡Correcto!</p>'}
+  else{b.classList.add('bad');exAns[exAns.length-1]=Number(b.dataset.ex);document.getElementById('examEnd').innerHTML=`<p class="muted">❌ Era: <b>${esc(q[1][q[2]])}</b></p>`}
   document.getElementById('examNext').style.display='inline-block';
 });
 document.getElementById('examNext').addEventListener('click',()=>{
@@ -201,7 +215,12 @@ document.getElementById('examNext').addEventListener('click',()=>{
     const ok=exHits>=Math.ceil(exOrder.length*0.6);
     if(ok){prog.done[COURSES[cur].id]=true;save()}
     document.getElementById('examQ').innerHTML='';
-    document.getElementById('examEnd').innerHTML=`<p style="font-size:18px">${ok?'🎉 ¡Aprobado! '+exHits+'/'+exOrder.length:'😞 '+exHits+'/'+exOrder.length+' — necesitas 60%. ¡Reintenta!'} </p>`;
+    const rev=exOrder.map((qi,k)=>{
+      const q=COURSES[cur].exam[qi];
+      const mine=exAns[k];
+      return `<div class="lesson${mine===q[2]?' done':''}"><b>${k+1}. ${esc(q[0])}</b><br><small>Tu respuesta: ${mine==null?'—':esc(q[1][mine])} ${mine===q[2]?'✅':'❌'}</small><br><small>Correcta: <b>${esc(q[1][q[2]])}</b></small></div>`;
+    }).join('');
+    document.getElementById('examEnd').innerHTML=`<p style="font-size:18px">${ok?'🎉 ¡Aprobado! '+exHits+'/'+exOrder.length:'😞 '+exHits+'/'+exOrder.length+' — necesitas 60%. ¡Reintenta!'} </p><h3 style="margin-top:14px">Revisión:</h3>`+rev;
     document.getElementById('examNext').style.display='none';
     document.getElementById('startExam').style.display='inline-block';
     document.getElementById('startExam').textContent='Reintentar examen ↻';
