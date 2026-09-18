@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#04060d">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http%3A//www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%231a2e05'/%3E%3Cpolygon%20points='32,10%2044,22%2038,52%2026,52%2020,22'%20fill='%234ade80'/%3E%3Ccircle%20cx='32'%20cy='34'%20r='7'%20fill='%23052e16'/%3E%3C/svg%3E">
+<meta name="description" content="Staff Academy: cursos, pruebas y diplomas para formar Staff de Minecraft.">
+<title>Staff Academy — Discohikorybrs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#04060d;--panel:rgba(15,20,35,.55);--line:rgba(139,92,246,.2);--text:#f5f7ff;--muted:#9da8c5;--a:#8b5cf6;--ok:#34d399;--bad:#f87171}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,sans-serif;line-height:1.6}
+.bg-grid{position:fixed;inset:0;z-index:-2;opacity:.14;background-image:linear-gradient(#293354 1px,transparent 1px),linear-gradient(90deg,#293354 1px,transparent 1px);background-size:44px 44px}
+header{max-width:1120px;margin:auto;padding:20px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:50;background:rgba(4,6,13,.8);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.brand{font:700 16px 'Space Grotesk';color:#fff;text-decoration:none}
+.back{color:#b39aff;text-decoration:none;font-size:13px;border:1px solid var(--line);padding:8px 14px;border-radius:8px}
+main{max-width:1120px;margin:auto;padding:24px}
+.hero-t{text-align:center;padding:26px 0 6px}
+.hero-t h1{font:700 clamp(28px,4.5vw,44px) 'Space Grotesk';margin:10px 0;background:linear-gradient(90deg,#fff 25%,#86efac);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{color:#86efac;font-size:10px;font-family:'Press Start 2P',monospace;letter-spacing:2px}
+.lead{color:var(--muted);max-width:640px;margin:0 auto}
+.glass{background:var(--panel);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:15px;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.card{padding:22px;margin-bottom:18px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.course{cursor:pointer;transition:transform .25s}
+.course:hover{transform:translateY(-4px);border-color:var(--ok)}
+.course h3{margin:6px 0}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid var(--ok);color:#86efac}
+.badge.off{border-color:var(--line);color:var(--muted)}
+.bar{height:8px;border-radius:5px;background:rgba(255,255,255,.08);overflow:hidden;margin:10px 0}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#4ade80,#a7f3d0);border-radius:5px}
+.lesson{border-left:3px solid var(--a);padding:10px 14px;margin:10px 0;background:rgba(0,0,0,.25);border-radius:0 10px 10px 0;font-size:14px}
+.lesson.done{border-color:var(--ok);opacity:.75}
+.lesson b{color:#fff}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;font-size:14px}
+.opt:hover:not(:disabled){border-color:var(--ok)}
+.opt.ok{border-color:var(--ok);background:rgba(52,211,153,.08)}
+.opt.bad{border-color:var(--bad);background:rgba(248,113,113,.08)}
+.opt:disabled{cursor:default}
+.rowbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{padding:11px 20px;border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:#fff;background:rgba(255,255,255,.04);cursor:pointer}
+.btn:hover{border-color:#4ade80}
+.primary{background:linear-gradient(#4ade80,#15803d);border:2px solid #141414;border-radius:4px;color:#04120a}
+.diploma{text-align:center;border:2px solid #fbbf24;border-radius:16px;padding:30px;background:radial-gradient(circle at 50% 0%,rgba(251,191,36,.12),transparent 70%)}
+.diploma h2{font:700 30px 'Space Grotesk';color:#fcd34d;margin:6px 0}
+.muted{color:var(--muted);font-size:13px}
+h2.st{font:700 22px 'Space Grotesk';margin:0 0 4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+footer{text-align:center;padding:34px 20px;color:var(--muted);font-size:12px;border-top:1px solid rgba(255,255,255,.06);margin-top:30px}
+footer strong{color:#fff}
+.visits{margin-top:10px;font-size:13px;color:var(--muted)}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bg-grid" aria-hidden="true"></div>
+<header>
+  <a class="back" href="https://discohikory.github.io/Portafolio/">← Portafolio</a>
+  <a class="brand" href="#">🏛️ Staff Academy</a>
+</header>
+<main>
+  <div class="hero-t">
+    <p class="eyebrow">CURSOS · PRUEBAS · DIPLOMAS</p>
+    <h1>Staff Academy</h1>
+    <p class="lead">La academia donde los Helpers se gradúan: estudia las lecciones, aprueba el examen (60%) y reclama tu diploma.</p>
+  </div>
+  <div id="homeView">
+    <div class="grid3" id="courseGrid"></div>
+    <div class="card glass" id="diplomaBox" style="display:none">
+      <div class="diploma">
+        <p class="eyebrow">DIPLOMA STAFF</p>
+        <h2 id="dipName">Aspirante</h2>
+        <p class="muted">Completó la Staff Academy: Fundamentos, Moderación y Liderazgo.</p>
+        <p class="muted" id="dipDate"></p>
+        <div class="rowbtns" style="justify-content:center"><button type="button" class="btn primary" id="dipCopy">Copiar diploma 📋</button></div>
+      </div>
+    </div>
+    <div class="card glass">
+      <h2 class="st">🎓 Tu nombre de graduado</h2>
+      <div class="rowbtns"><input id="stuName" maxlength="30" placeholder="Tu nick" style="font-family:inherit;color:#fff;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px;font-size:13px"><button type="button" class="btn" id="stuSave">Guardar</button></div>
+    </div>
+  </div>
+  <div id="courseView" style="display:none">
+    <div class="rowbtns"><button type="button" class="btn" id="backHome">← Cursos</button></div>
+    <div class="card glass"><h2 class="st" id="cTitle"></h2><p class="muted" id="cDesc"></p><div id="cLessons"></div></div>
+    <div class="card glass" id="examBox" style="display:none">
+      <h2 class="st">📝 Examen final</h2>
+      <div id="examQ"></div>
+      <div class="rowbtns"><button type="button" class="btn primary" id="examNext" style="display:none">Siguiente →</button></div>
+      <div id="examEnd"></div>
+    </div>
+    <div class="rowbtns"><button type="button" class="btn primary" id="startExam">Hacer el examen 📝</button></div>
+  </div>
+</main>
+<section style="max-width:1120px;margin:6px auto 0;padding:0 24px">
+  <div class="card glass">
+    <h2 class="st">🚀 Mis proyectos</h2>
+    <div class="grid2" id="projLinks"></div>
+  </div>
+</section>
+<footer>© 2026 Daniel Esteban Vera Fernandez · <strong>Discohikorybrs</strong> · Todos los derechos reservados.<br><small>El diploma es simbólico y se guarda en tu navegador. Hecho con ⛏️</small><div class="visits">👁 <span id="visitCount">…</span> visitas</div></footer>
+<script>
+const PROJS=[["Portfolio principal","https://discohikory.github.io/Portafolio/"],["Staff Toolkit","https://discohikory.github.io/Staff-Toolkit/"],["Wiki de Comandos","https://discohikory.github.io/Wiki-Comandos/"],["Quiz Staff","https://discohikory.github.io/Quiz-Staff/"],["Status en vivo","https://discohikory.github.io/Server-Status/"],["Guía de Encantamientos","https://discohikory.github.io/Guia-Encantamientos/"],["Crónicas del Staff","https://discohikory.github.io/Cronicas/"],["Centro de comunidad","https://discohikory.github.io/Comunidad/"],["PlayerCards","https://discohikory.github.io/PlayerCards/"],["Radio Gamer","https://discohikory.github.io/Radio-Gamer/"],["Starter Pack","https://discohikory.github.io/Starter-Pack/"],["Aldeano IA","https://discohikory.github.io/Aldeano-IA/"],["Disco AI","https://discohikory.github.io/Disco-AI/"],["Bingo MC","https://discohikory.github.io/Bingo-MC/"],["Semillas","https://discohikory.github.io/Semillas/"],["Fanarts","https://discohikory.github.io/Fanarts/"],["Staff Wiki","https://discohikory.github.io/Staff-Wiki/"]];
+document.getElementById('projLinks').innerHTML=PROJS.map(p=>`<div><h3 style="margin:6px 0">${p[0]}</h3><div class="rowbtns"><a class="btn" href="${p[1]}">Abrir ↗</a></div></div>`).join('');
+const COURSES=[
+{id:"basico",icon:"🌱",t:"Fundamentos del Staff",d:"Reglas, chat, tickets y actitud. Para Helpers nuevos.",lessons:[["El rol",["Un Helper orienta, reporta y aprende. No sanciona: observa y deriva."],["El chat",["Spam, mayúsculas y flood se avisan primero; el mute es el último recurso leve."],["Tickets",["Todo ticket se confirma con el usuario antes de cerrarse."]],["Evidencia",["Sin captura, video o log no hay sanción grave."]}],
+ exam:[["Spam primera vez, ¿qué haces?",["Mute 1 hora","Avisar en el chat","Banear","Ignorar"],1],["¿Dónde se apela?",["Chat general","Tickets/apelaciones","MD al dueño","No se puede"],1],["Reporte sin pruebas, ¿qué haces?",["Sancionar igual","Pedir pruebas","Ignorarlo","Banear al que reporta"],1],["Ticket resuelto, ¿cómo cierras?",["Sin decir nada","Confirmando con el usuario","Borrándolo","Pasándolo"],1],["Tu amigo rompe reglas, ¿qué haces?",["Perdonarlo","Aplicar igual + hablar en privado","Que lo sancione otro","Ignorarlo"],1]]},
+{id:"mod",icon:"🛡️",t:"Moderación",d:"Sanciones, apelaciones, griefing y mediación.",lessons:[["Escala",["Leve→media→grave. Cada nivel tiene su sanción tipificada."],["Apelaciones",["Se revisan con pruebas e historial; sin pruebas nuevas no hay cambio."],["Griefing",["Con logs se sanciona + rollback; sin pruebas se investiga."],["Mediación",["Escuchar a ambas partes antes de decidir."]}],
+ exam:[["TP-trap primera vez, ¿sanción?",["Solo advertencia","Ban 1 día + devolución","Ban 15 días","Mute"],1],["Insultos tercera vez, ¿sanción?",["Mute 12 horas","Ban 7 días","Mute 3 días","Permanente"],2],["Hacks con video claro, ¿sanción?",["Ban 30 días","Mute","Ban 7 días","Advertencia"],2],["Apelación sin pruebas nuevas, ¿qué decides?",["Aceptarla","Rechazarla","Reducirla","Ignorarla"],1],["Grief de 300 bloques con autor en logs, ¿qué haces?",["Advertir","Ban + rollback filtrado","Solo rollback","Pedir más pruebas"],1]]},
+{id:"lider",icon:"⚔️",t:"Liderazgo",d:"Crisis, equipo, imparcialidad y comunicación.",lessons:[["En privado",["Lo interno del Staff jamás se discute en público."],["Imparcialidad",["Amigos y famosos reciben el mismo trato."],["Crisis",["Contener, comunicar con calma y escalar."],["Equipo",["Formar, rotar y reconocer el trabajo."]}],
+ exam:[["Dos staffs discuten en público, ¿qué haces?",["Unirte","Privado + unificar criterio","Apoyar al mayor rango","Ignorarlo"],1],["Streamer famoso con hacks en video, ¿qué haces?",["Ban sin revisar","Sanción mayor","Mismo proceso que cualquiera","Avisarle en privado"],2],["Raid coordinada al servidor, ¿qué haces?",["Observar","Contención + bans + avisar","Banear lento","Nada"],0],["Te equivocas sancionando, ¿qué haces?",["Dejarlo","Corregir + disculparte + registrar","Callar","Culpar al reglamento"],1],["Equipo quemado, ¿qué haces?",["Exigir más","Rotar y descansar","Expulsar","Nada"],1]]}
+];
+const esc=v=>{const d=document.createElement('div');d.textContent=v==null?"":v;return d.innerHTML};
+const store={get:(k,f)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch(e){return f}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let prog=store.get('acad_prog',{done:{},read:{}});
+function save(){store.set('acad_prog',prog)}
+function paintHome(){
+  document.getElementById('courseGrid').innerHTML=COURSES.map((c,i)=>{
+    const done=!!prog.done[c.id];
+    const read=(prog.read[c.id]||[]).length;
+    return `<div class="card glass course" data-course="${i}"><h3>${c.icon} ${c.t}</h3><p class="muted">${c.d}</p><p>${done?'<span class="badge">✅ Aprobado</span>':'<span class="badge off">Lecciones '+read+'/'+c.lessons.length+'</span>'}</p><div class="bar"><i style="width:${done?100:Math.round(read/c.lessons.length*100)}%"></i></div></div>`;
+  }).join('');
+  const all=COURSES.every(c=>prog.done[c.id]);
+  document.getElementById('diplomaBox').style.display=all?'block':'none';
+  if(all){
+    document.getElementById('dipName').textContent=store.get('acad_name','Aspirante');
+    document.getElementById('dipDate').textContent=new Date().toLocaleDateString('es-CO');
+  }
+  document.getElementById('stuName').value=store.get('acad_name','');
+}
+document.getElementById('stuSave').addEventListener('click',()=>{store.set('acad_name',document.getElementById('stuName').value.trim()||'Aspirante');paintHome();alert('Nombre guardado. 🎓')});
+document.getElementById('dipCopy').addEventListener('click',async()=>{
+  const t=`DIPLOMA STAFF — ${store.get('acad_name','Aspirante')} completó la Staff Academy (Fundamentos, Moderación, Liderazgo). ${new Date().toLocaleDateString('es-CO')} · Discohikorybrs`;
+  try{await navigator.clipboard.writeText(t);alert('¡Diploma copiado! 🎓')}catch(e){alert('No se pudo copiar.')}
+});
+let cur=0,exIdx=0,exHits=0;
+document.getElementById('courseGrid').addEventListener('click',e=>{
+  const c=e.target.closest?e.target.closest('[data-course]'):null;
+  if(!c)return;
+  openCourse(Number(c.dataset.course));
+});
+function openCourse(i){
+  cur=i;exIdx=0;exHits=0;
+  const c=COURSES[i];
+  document.getElementById('homeView').style.display='none';
+  document.getElementById('courseView').style.display='block';
+  document.getElementById('cTitle').textContent=c.icon+' '+c.t;
+  document.getElementById('cDesc').textContent=c.d;
+  paintLessons();
+  document.getElementById('examBox').style.display='none';
+  document.getElementById('startExam').style.display='inline-block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function paintLessons(){
+  const c=COURSES[cur],read=prog.read[c.id]||[];
+  document.getElementById('cLessons').innerHTML=c.lessons.map((l,i)=>`<div class="lesson${read.includes(i)?' done':''}"><b>${i+1}. ${esc(l[0])}</b><br>${esc(l[1])}<div class="rowbtns"><button type="button" class="btn" data-read="${i}">${read.includes(i)?'✓ Leída':'Marcar leída'}</button></div></div>`).join('');
+}
+document.getElementById('cLessons').addEventListener('click',e=>{
+  const b=e.target.closest?e.target.closest('[data-read]'):null;
+  if(!b)return;
+  const c=COURSES[cur],i=Number(b.dataset.read);
+  prog.read[c.id]=prog.read[c.id]||[];
+  if(!prog.read[c.id].includes(i))prog.read[c.id].push(i);
+  save();paintLessons();
+});
+document.getElementById('backHome').addEventListener('click',()=>{
+  document.getElementById('courseView').style.display='none';
+  document.getElementById('homeView').style.display='block';
+  paintHome();
+});
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a}
+let exOrder=[];
+document.getElementById('startExam').addEventListener('click',()=>{
+  exOrder=shuffle(COURSES[cur].exam.map((_,k)=>k));
+  exIdx=0;exHits=0;
+  document.getElementById('examBox').style.display='block';
+  document.getElementById('startExam').style.display='none';
+  showEx();
+});
+function showEx(){
+  const q=COURSES[cur].exam[exOrder[exIdx]];
+  const order=shuffle([0,1,2,3]);
+  document.getElementById('examEnd').innerHTML='';
+  document.getElementById('examQ').innerHTML=`<p><b>Pregunta ${exIdx+1}/${exOrder.length}:</b> ${esc(q[0])}</p>`+order.map(k=>`<button class="opt" data-ex="${k}">${esc(q[1][k])}</button>`).join('');
+  document.getElementById('examNext').style.display='none';
+}
+document.getElementById('examQ').addEventListener('click',e=>{
+  const b=e.target.closest?e.target.closest('[data-ex]'):null;
+  if(!b)return;
+  const q=COURSES[cur].exam[exOrder[exIdx]];
+  document.querySelectorAll('#examQ .opt').forEach(o=>{o.disabled=true;if(Number(o.dataset.ex)===q[2])o.classList.add('ok')});
+  if(Number(b.dataset.ex)===q[2]){exHits++;document.getElementById('examEnd').innerHTML='<p class="muted">✅ ¡Correcto!</p>'}
+  else{b.classList.add('bad');document.getElementById('examEnd').innerHTML=`<p class="muted">❌ Era: <b>${esc(q[1][q[2]])}</b></p>`}
+  document.getElementById('examNext').style.display='inline-block';
+});
+document.getElementById('examNext').addEventListener('click',()=>{
+  exIdx++;
+  if(exIdx>=exOrder.length){
+    const ok=exHits>=Math.ceil(exOrder.length*0.6);
+    if(ok){prog.done[COURSES[cur].id]=true;save()}
+    document.getElementById('examQ').innerHTML='';
+    document.getElementById('examEnd').innerHTML=`<p style="font-size:18px">${ok?'🎉 ¡Aprobado! '+exHits+'/'+exOrder.length:'😞 '+exHits+'/'+exOrder.length+' — necesitas 60%. ¡Reintenta!'} </p>`;
+    document.getElementById('examNext').style.display='none';
+    document.getElementById('startExam').style.display='inline-block';
+    document.getElementById('startExam').textContent='Reintentar examen ↻';
+  }else showEx();
+});
+paintHome();
+(function(){
+  var el=document.getElementById('visitCount');
+  if(!el)return;
+  function fmt(n){n=Number(n)||0;return n>=1000?(n/1000).toFixed(1).replace('.',',').replace(',0','')+' mil':String(n)}
+  fetch('https://api.jsonbin.io/v3/b/6aac6a86ffd5d1605313c161/latest',{headers:{'X-Access-Key':'$2a$10$XbVd43wzBhlIfE1632782ePKNz5e/MaX25U3NJ5JRIBKtJt0ILnXC'}})
+  .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+    var v=(j.record&&j.record.visits)||{};
+    v.academy=(v.academy||0)+1;
+    el.textContent=fmt(v.academy);
+    fetch('https://api.jsonbin.io/v3/b/6aac6a86ffd5d1605313c161',{method:'PUT',headers:{'Content-Type':'application/json','X-Access-Key':'$2a$10$XbVd43wzBhlIfE1632782ePKNz5e/MaX25U3NJ5JRIBKtJt0ILnXC','X-Bin-Versioning':'false'},body:JSON.stringify({visits:v})}).catch(function(){});
+  }).catch(function(){el.textContent='—'});
+})();
+</script>
+</body>
+</html>
